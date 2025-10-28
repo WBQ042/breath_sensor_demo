@@ -1,0 +1,187 @@
+{
+	"name": "pdf-docx-reader",
+	"displayName": "Cursor AI PDF/DOCX Reader",
+	"description": "AI-powered PDF and DOCX reader for Cursor IDE with auto-detection. Extract text, metadata, and seamlessly integrate with AI agents for automatic document processing.",
+	"version": "1.1.0",
+	"publisher": "padg9912",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"cursor-ai",
+		"ai-agent",
+		"pdf-reader",
+		"docx-reader",
+		"document-processing",
+		"text-extraction",
+		"ai-integration",
+		"cursor-ide",
+		"pdf-plumber",
+		"python-docx",
+		"metadata-extraction",
+		"ai-workflow"
+	],
+	"activationEvents": [
+		"onCommand:pdfDocxReader.readFile",
+		"onCommand:pdfDocxReader.readFileAsText",
+		"onCommand:pdfDocxReader.readFileAsJson",
+		"onCommand:pdfDocxReader.batchProcessFiles",
+		"onCommand:pdfDocxReader.readFileForAI",
+		"onCommand:pdfDocxReader.getDocumentSummary",
+		"onCommand:pdfDocxReader.autoDetectAndProcess",
+		"onCommand:pdfDocxReader.processForAI",
+		"onCommand:pdfDocxReader.getAIReadyContent"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pdfDocxReader.readFile",
+				"title": "Read PDF/DOCX File",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.readFileAsText",
+				"title": "Read PDF/DOCX as Text",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.readFileAsJson",
+				"title": "Read PDF/DOCX as JSON",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.batchProcessFiles",
+				"title": "Batch Process PDF/DOCX Files",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.readFileForAI",
+				"title": "Read File for AI Processing",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.getDocumentSummary",
+				"title": "Get Document Summary",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.autoDetectAndProcess",
+				"title": "Auto-Detect and Process Document",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.processForAI",
+				"title": "Process Document for AI",
+				"category": "PDF/DOCX Reader"
+			},
+			{
+				"command": "pdfDocxReader.getAIReadyContent",
+				"title": "Get AI-Ready Content",
+				"category": "PDF/DOCX Reader"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "resourceExtname == '.pdf' || resourceExtname == '.docx'",
+					"command": "pdfDocxReader.readFile",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceExtname == '.pdf' || resourceExtname == '.docx'",
+					"command": "pdfDocxReader.readFileAsText",
+					"group": "navigation"
+				}
+			],
+			"editor/context": [
+				{
+					"when": "resourceExtname == '.pdf' || resourceExtname == '.docx'",
+					"command": "pdfDocxReader.readFile",
+					"group": "navigation"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "pdfDocxReader.readFile",
+				"key": "ctrl+shift+r",
+				"mac": "cmd+shift+r",
+				"when": "resourceExtname == '.pdf' || resourceExtname == '.docx'"
+			}
+		],
+		"configuration": {
+			"title": "PDF/DOCX Reader",
+			"properties": {
+				"pdfDocxReader.pythonPath": {
+					"type": "string",
+					"default": "python",
+					"description": "Path to Python executable"
+				},
+				"pdfDocxReader.outputFormat": {
+					"type": "string",
+					"enum": [
+						"json",
+						"text"
+					],
+					"default": "json",
+					"description": "Default output format for file reading"
+				},
+				"pdfDocxReader.showMetadata": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show document metadata in output"
+				},
+				"pdfDocxReader.maxFileSize": {
+					"type": "number",
+					"default": 50,
+					"description": "Maximum file size in MB"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.74.0",
+		"@types/node": "16.x",
+		"typescript": "^4.9.4",
+		"vsce": "^2.15.0"
+	},
+	"dependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/padg9912/cursor-pdf-docx-reader-.git"
+	},
+	"bugs": {
+		"url": "https://github.com/padg9912/cursor-pdf-docx-reader-/issues"
+	},
+	"homepage": "https://github.com/padg9912/cursor-pdf-docx-reader-#readme",
+	"license": "MIT",
+	"galleryBanner": {
+		"color": "#007ACC",
+		"theme": "dark"
+	},
+	"icon": "images/icon.png",
+	"preview": true,
+	"badges": [
+		{
+			"url": "https://github.com/padg9912/cursor-pdf-docx-reader-/issues",
+			"href": "https://github.com/padg9912/cursor-pdf-docx-reader-/issues",
+			"description": "Issues"
+		}
+	],
+	"__metadata": {
+		"installedTimestamp": 1761620257208,
+		"targetPlatform": "undefined",
+		"size": 800575
+	}
+}
